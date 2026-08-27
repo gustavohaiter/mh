@@ -1,0 +1,2 @@
+Coloque aqui o arquivo de logo real da Auto Peças MH (ex: logo-mh.png) quando tiver o arquivo em mãos.
+Por enquanto o site usa um logo reconstruído em SVG/CSS (engrenagem + "MH" + faixa dourada) direto no código, então não há nenhuma dependência de imagem para o site funcionar.

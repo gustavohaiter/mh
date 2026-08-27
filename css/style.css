@@ -1,0 +1,594 @@
+/* ==========================================================================
+   GRUPO MH — folha de estilos principal
+   Variáveis de cor tiradas do logo: fundo preto, engrenagem cinza, faixa dourada
+   ========================================================================== */
+
+:root {
+  --color-bg: #0d0d0d;
+  --color-bg-alt: #161616;
+  --color-surface: #1e1e1e;
+  --color-border: #2c2c2c;
+  --color-text: #f2f2f2;
+  --color-muted: #b0b0b0;
+  --color-gold: #d99a2b;
+  --color-gold-dark: #b87f1e;
+  --color-gray: #8a8a8a;
+
+  --radius: 10px;
+  --max-width: 1100px;
+  --transition: 0.2s ease;
+  --font-heading: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-muted);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+  font-size: 0.95rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--gold {
+  background: var(--color-gold);
+  color: #14110a;
+}
+
+.btn--gold:hover {
+  background: var(--color-gold-dark);
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.btn--outline:hover {
+  background: var(--color-gold);
+  color: #14110a;
+}
+
+.btn--block {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   LOGO (SVG inline reaproveitado em todas as páginas)
+   ========================================================================== */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand__mark {
+  height: 2.4rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.brand__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.brand__name span {
+  color: var(--color-gold);
+}
+
+.brand__tagline {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   HEADER / NAVEGAÇÃO
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color var(--transition);
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--color-text);
+}
+
+.nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: var(--color-gold);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  padding: 5rem 0 4rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, rgba(217, 154, 43, 0.12), transparent 60%),
+    var(--color-bg);
+}
+
+.hero__eyebrow {
+  color: var(--color-gold);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 1rem auto 2rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hero__badge {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 999px;
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CARDS (unidades do grupo)
+   ========================================================================== */
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+}
+
+.card__icon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color-gold);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+}
+
+.card p {
+  color: var(--color-muted);
+  flex-grow: 1;
+}
+
+.card__link {
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ==========================================================================
+   LISTAS DE SERVIÇOS / PRODUTOS
+   ========================================================================== */
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+}
+
+.check-list li::before {
+  content: "✔";
+  color: var(--color-gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.cross-list li::before {
+  content: "✕";
+  color: var(--color-gray);
+}
+
+/* ==========================================================================
+   INFO / CONTATO (endereço, telefone, horário)
+   ========================================================================== */
+
+.info-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.info-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.info-card h3 {
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.info-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.info-row .icon {
+  flex-shrink: 0;
+  color: var(--color-gold);
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-top: 0.15rem;
+}
+
+.info-row strong {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  margin-bottom: 0.15rem;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.hours-table td {
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: var(--color-muted);
+}
+
+.info-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   FAIXA CTA
+   ========================================================================== */
+
+.cta-strip {
+  background: linear-gradient(120deg, #1a1a1a, #0d0d0d);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.cta-strip h2 {
+  font-size: 1.6rem;
+}
+
+.cta-strip p {
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  padding: 3.5rem 0 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 2.5rem;
+}
+
+.footer-grid h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.footer-grid p,
+.footer-grid a {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-grid a:hover {
+  color: var(--color-gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   BOTÃO FLUTUANTE DE WHATSAPP
+   ========================================================================== */
+
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25d366;
+  color: #0d0d0d;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: transform var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.whatsapp-float svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.5rem 1.25rem 1rem;
+    display: none;
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .whatsapp-float span {
+    display: none;
+  }
+
+  .whatsapp-float {
+    padding: 0.8rem;
+  }
+}
